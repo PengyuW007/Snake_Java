@@ -7,6 +7,8 @@ public class Snake {
     private int h = Game.height;
     private int d = Game.dimension;
 
+    private String move;
+
     public Snake() {
         body = new ArrayList<>();
         Rectangle temp = new Rectangle(Game.dimension, Game.dimension);
@@ -17,11 +19,30 @@ public class Snake {
         temp.setLocation((w / 2 - 1) * d, (h / 2 - 1) * d);
         body.add(temp);
 
-        temp = new Rectangle(d,d);
+        temp = new Rectangle(d, d);
         temp.setLocation((w / 2 - 2) * d, (h / 2 - 2) * d);
         body.add(temp);
+
+        move = "NOTHING";
     }
 
+    public void up(){
+        move = "UP";
+    }
+
+    public void down(){
+        move ="DOWN";
+    }
+
+    public void left(){
+        move ="LEFT";
+    }
+
+    public void right(){
+        move = "RIGHT";
+    }
+
+    /*Helper methods*/
     public ArrayList<Rectangle> getBody() {
         return body;
     }
