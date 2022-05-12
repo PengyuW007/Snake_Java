@@ -9,14 +9,15 @@ public class Food {
     }
 
     public void random_spawn(Snake snake) {
-        boolean onSnake = false;
+        boolean onSnake = true;
 
-        while(!onSnake){
-            x = (int) Math.random() * Game.width;
-            y = (int) Math.random() * Game.height;
+        while (onSnake) {
+            onSnake = false;
+            x = (int) (Math.random() * Game.width - 1);
+            y = (int) (Math.random() * Game.height - 1);
 
-            for(Rectangle rectangle: snake.getBody()){
-                if(rectangle.x==x&&rectangle.y==y){
+            for (Rectangle rectangle : snake.getBody()) {
+                if (rectangle.x == x && rectangle.y == y) {
                     onSnake = true;
                 }
 

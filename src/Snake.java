@@ -16,15 +16,23 @@ public class Snake {
         body.add(temp);
 
         temp = new Rectangle(d, d);
-        temp.setLocation((w / 2 - 1) * d, (h / 2 - 1) * d);
+        temp.setLocation((w / 2 - 1) * d, (h / 2) * d);
         body.add(temp);
 
         temp = new Rectangle(d, d);
-        temp.setLocation((w / 2 - 2) * d, (h / 2 - 2) * d);
+        temp.setLocation((w / 2 - 2) * d, (h / 2) * d);
         body.add(temp);
 
         move = "NOTHING";
     }//end Snake constructor
+
+    public int getX() {
+        return body.get(0).x;
+    }
+
+    public int getY() {
+        return body.get(0).y;
+    }
 
     public void move() {
         if (move != "NOTHING") {
@@ -41,12 +49,12 @@ public class Snake {
                 temp.setLocation(first.x + Game.dimension, first.y);
             }
 
-            body.add(0,temp);
-            body.remove(body.size()-1);
+            body.add(0, temp);
+            body.remove(body.size() - 1);
         }
     }//end move
 
-    public void grow(){
+    public void grow() {
         Rectangle first = body.get(0);
         Rectangle temp = new Rectangle(Game.dimension, Game.dimension);
 
@@ -60,19 +68,21 @@ public class Snake {
             temp.setLocation(first.x + Game.dimension, first.y);
         }
 
-        body.add(0,temp);
-        body.remove(body.size()-1);
+        body.add(0, temp);
     }//end grow
 
     public void up() {
+
         move = "UP";
     }
 
     public void down() {
+
         move = "DOWN";
     }
 
     public void left() {
+
         move = "LEFT";
     }
 
