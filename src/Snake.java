@@ -122,4 +122,12 @@ public class Snake {
     public void setD(int d) {
         this.d = d;
     }
+
+    public String getMove() {
+        return move;
+    }
+
+    public void setMove(String move) {
+        this.move = move;
+    }
 }

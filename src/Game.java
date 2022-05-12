@@ -14,16 +14,18 @@ public class Game implements KeyListener {
     protected static final int dimension = 20;
 
     public Game() {
+
         window = new JFrame("Snake");
 
         snake = new Snake();
         food = new Food(snake);
+
         graphics = new Graphics(this);
         window.add(graphics);
-
         window.setSize(width * dimension + 2, height * dimension + dimension + 4);
         window.setVisible(true);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
     }//end Game constructor
 
     public void start() {
@@ -61,7 +63,7 @@ public class Game implements KeyListener {
 
     public boolean self_collision() {
         boolean res = false;
-        for (int i = 0; i < snake.getBody().size(); i++) {
+        for (int i = 1; i < snake.getBody().size(); i++) {
             if (snake.getX() == snake.getBody().get(i).x && snake.getY() == snake.getBody().get(i).y) {
                 res = true;
             }
@@ -76,22 +78,22 @@ public class Game implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+
         int keyCode = e.getKeyCode();
 
         if (graphics.state == "RUNNING") {
-            if (keyCode == KeyEvent.VK_W) {
+            if (keyCode == KeyEvent.VK_W && snake.getMove() != "DOWN") {
                 snake.up();
-            } else if (keyCode == KeyEvent.VK_S) {
+            } else if (keyCode == KeyEvent.VK_S && snake.getMove() != "UP") {
                 snake.down();
-            } else if (keyCode == KeyEvent.VK_A) {
+            } else if (keyCode == KeyEvent.VK_A && snake.getMove() != "RIGHT") {
                 snake.left();
-            } else if (keyCode == KeyEvent.VK_D) {
+            } else if (keyCode == KeyEvent.VK_D && snake.getMove() != "LEFT") {
                 snake.right();
             }
         } else {
             this.start();
         }
-
 
     }
 
@@ -122,5 +124,13 @@ public class Game implements KeyListener {
 
     public void setGraphics(Graphics graphics) {
         this.graphics = graphics;
+    }
+
+    public JFrame getWindow() {
+        return window;
+    }
+
+    public void setWindow(JFrame window) {
+        this.window = window;
     }
 }
