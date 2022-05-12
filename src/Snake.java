@@ -24,21 +24,59 @@ public class Snake {
         body.add(temp);
 
         move = "NOTHING";
-    }
+    }//end Snake constructor
 
-    public void up(){
+    public void move() {
+        if (move != "NOTHING") {
+            Rectangle first = body.get(0);
+            Rectangle temp = new Rectangle(Game.dimension, Game.dimension);
+
+            if (move == "UP") {
+                temp.setLocation(first.x, first.y - Game.dimension);
+            } else if (move == "DOWN") {
+                temp.setLocation(first.x, first.y + Game.dimension);
+            } else if (move == "LEFT") {
+                temp.setLocation(first.x - Game.dimension, first.y);
+            } else if (move == "RIGHT") {
+                temp.setLocation(first.x + Game.dimension, first.y);
+            }
+
+            body.add(0,temp);
+            body.remove(body.size()-1);
+        }
+    }//end move
+
+    public void grow(){
+        Rectangle first = body.get(0);
+        Rectangle temp = new Rectangle(Game.dimension, Game.dimension);
+
+        if (move == "UP") {
+            temp.setLocation(first.x, first.y - Game.dimension);
+        } else if (move == "DOWN") {
+            temp.setLocation(first.x, first.y + Game.dimension);
+        } else if (move == "LEFT") {
+            temp.setLocation(first.x - Game.dimension, first.y);
+        } else if (move == "RIGHT") {
+            temp.setLocation(first.x + Game.dimension, first.y);
+        }
+
+        body.add(0,temp);
+        body.remove(body.size()-1);
+    }//end grow
+
+    public void up() {
         move = "UP";
     }
 
-    public void down(){
-        move ="DOWN";
+    public void down() {
+        move = "DOWN";
     }
 
-    public void left(){
-        move ="LEFT";
+    public void left() {
+        move = "LEFT";
     }
 
-    public void right(){
+    public void right() {
         move = "RIGHT";
     }
 
